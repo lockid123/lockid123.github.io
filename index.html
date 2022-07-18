@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+
+    <META HTTP-EQUIV="REFRESH" CONTENT="5;URL=file:///C:/Users/alexi/Desktop/SEMESTRES/9no/IOT/GGOO/save-update-remove-data-firebase-example-master/index.html">
+
+</head>
+
+<body>
+    <div id="root"></div>
+    <script>
+        //Your web app´s Firebase configuration 
+        var firebaseConfig = {
+            apiKey: "AIzaSyC-dNBMUl7jG5U3bTMTyxXw2bwrPWQMdqU",
+             authDomain: "bd-prueba1.firebaseapp.com",
+            databaseURL: "https://bd-prueba1-default-rtdb.firebaseio.com",
+            projectId: "bd-prueba1",
+            storageBucket: "bd-prueba1.appspot.com",
+            messagingSenderId: "173647925265",
+            appId: "1:173647925265:web:eb0f67776412d2ee3f21b0",
+            measurementId: "G-KZYJ3WZ685"
+        };
+        //Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var firebaseRef = firebase.database().ref("test");
+        firebaseRef.on("value", function(snapshot) {
+            snapshot.forEach(function(element) {
+                document.querySelector('#root').innerHTML += `
+                    <div>${element.val()}</div>
+                `
+            });
+        });
+    </script>
